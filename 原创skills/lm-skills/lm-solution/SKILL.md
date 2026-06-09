@@ -1,8 +1,6 @@
 ---
 name: lm-solution
-description: >
-  LinkMed 产品方案。solution.md → 自检 → 用户确认。审查由用户决定是否派子代理。
-  触发词：lm-solution, 写方案, 方案思路, 产品方案, solution。仅限 LinkMed 项目。
+description: LinkMed 产品方案。派子代理写 solution.md → 自检 → 确认。触发词：写方案/方案思路/产品方案。
 argument-hint: "<需求名称>"
 user-invocable: true
 disable-model-invocation: false

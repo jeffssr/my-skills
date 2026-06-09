@@ -1,8 +1,6 @@
 ---
 name: lm-prd
-description: >
-  LinkMed 需求规格 + 交互原型。基于 solution.md → spec.md → prd.html。审查由用户决定是否派子代理。
-  触发词：lm-prd, 写spec, 画原型, 写prd, spec文档, spec.md, PRD, 需求文档, 功能规格。仅限 LinkMed 项目。
+description: LinkMed 需求规格+原型。solution.md → spec.md → prd.html。触发词：写spec/画原型/写PRD/需求文档。
 argument-hint: "<需求名称>"
 user-invocable: true
 disable-model-invocation: false

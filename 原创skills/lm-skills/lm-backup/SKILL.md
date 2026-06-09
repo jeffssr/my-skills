@@ -1,8 +1,6 @@
 ---
 name: lm-backup
-description: >
-  LinkMed 需求文档版本备份与恢复。修改前创建快照，修改异常时可回退至任意历史版本。
-  触发词：lm-backup, 备份, 回退, 还原, 退回去, 改错了。仅限 LinkMed 项目。
+description: LinkMed 需求文档版本备份与恢复。改前快照，异常回退。触发词：备份/回退/还原/改错了。
 argument-hint: "<需求名称或目录路径>"
 user-invocable: true
 disable-model-invocation: false

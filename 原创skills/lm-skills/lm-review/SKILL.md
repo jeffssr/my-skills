@@ -1,8 +1,6 @@
 ---
 name: lm-review
-description: >
-  共享审查流程。被 lm-clarify / lm-solution / lm-prd 调用。
-  不独立触发，仅作为子流程引用。
+description: 共享审查流程。被 lm-clarify/solution/prd 调用，不独立触发。
 argument-hint: ""
 user-invocable: false
 disable-model-invocation: false

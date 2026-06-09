@@ -1,8 +1,6 @@
 ---
 name: lm-clarify
-description: >
-  LinkMed 需求澄清 + 代码搜索。自动判断先澄清还是先搜索，穿插进行。
-  触发词：lm-clarify, 澄清需求, 搜代码, 需求不明确, context, 代码搜索。仅限 LinkMed 项目。
+description: LinkMed 需求澄清+代码搜索。查漏补缺，输出 context.md。触发词：澄清需求/搜代码/需求不明确。
 argument-hint: "<需求描述或疑问点>"
 user-invocable: true
 disable-model-invocation: false
