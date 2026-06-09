@@ -110,7 +110,3 @@
 ```
 
 ---
-
-## 自查
-
-原型自查项已合并至 `prd-review-guide.md` 维度 B（原型对齐）+ C（CSS/样式规范），不再单独维护自查清单。自检时按 prd-review-guide.md 执行即可。

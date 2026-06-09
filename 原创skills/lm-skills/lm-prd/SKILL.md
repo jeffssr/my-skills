@@ -36,43 +36,22 @@ solution.md 存在？
 
 ## 核心流程与方案思路的关系
 
-spec「一、综述 > 2 核心业务流程」= solution.md 第 3 节。内容完全一致，不可重写、不可增减、不可变序、不可改措辞。
+spec > 核心业务流程 = solution.md 核心业务流程节。内容完全一致，不可重写、不可增减、不可变序、不可改措辞。
 
 其他章节：新需求以 solution.md 为大纲展开；修改已有需求以用户指定的已有 spec.md/prd.html 为来源。
-
----
-
-## 触发
-
-| 触发 | 不触发 |
-|------|--------|
-| 用户说"写spec""画原型""写PRD""写需求文档" | 需求还不清晰（先 lm-clarify） |
-| solution.md 已产出或用户已确认 | |
-| 用户要求生成/修改需求文档 | |
 
 ---
 
 ## 前置（按需加载）
 
 1. 读 CLAUDE.md + 项目 memory
-2. **写 spec 时读取**：`references/writing-rules.md` + `references/spec-template.md`
-3. **写 prd 时读取**：`references/prd-guide.md` + `references/prototype-guide.md` + `references/css-template.css`
-4. 确认需求目录存在（定义见 lm-backup「需求目录」章节）
-5. 确认 `frontend-design` skill 是否可用（优先使用，不可用时手写）
+2. **备份门禁：**详见 `../lm-shared/backup-gate.md`。若 spec.md 或 prd.html 已存在，覆写前必须先备份。
+3. **写 spec 时读取**：`references/writing-rules.md` + `references/spec-template.md`
+4. **写 prd 时读取**：`references/prd-guide.md` + `references/prototype-guide.md` + `references/css-template.css`
+5. 确认需求目录存在（定义见 lm-backup「需求目录」章节）
+6. 确认 `frontend-design` skill 是否可用（优先使用，不可用时手写）
 
 > 按当前步骤按需加载，节省上下文。
-
----
-
-## 备份门禁
-
-详见 `../lm-shared/backup-gate.md`。若 spec.md 或 prd.html 已存在，覆写前必须先备份。
-
----
-
-## 需求文档修改
-
-修改已有 spec.md/prd.html 时，同样严格遵守本技能全部规范。详见 `references/modification-guide.md`。
 
 ---
 
@@ -91,7 +70,7 @@ spec「一、综述 > 2 核心业务流程」= solution.md 第 3 节。内容完
 
 ### 核心流程
 
-新需求：spec「一、综述 > 2 核心业务流程」从 solution.md 第 3 节**完整复制**。修改需求：如 solution.md 给了新流程则更新，否则保持原有。
+新需求：spec > 核心业务流程 从 solution.md **完整复制**。修改需求：如 solution.md 给了新流程则更新，否则保持原有。
 
 ### 写完验证
 
