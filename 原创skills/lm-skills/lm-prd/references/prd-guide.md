@@ -1,0 +1,168 @@
+# prd.html 需求规格生成指南
+
+将 spec.md 转为自包含 Wiki 风格 HTML，原型直接内联绘制。
+
+---
+
+## 生成步骤
+
+1. 确认 spec.md 已完成
+2. Read `references/css-template.css`，将完整 CSS 嵌入 `<style>` 标签
+3. 将 spec.md 每个 section 映射为正文 HTML
+4. 按 `references/prototype-guide.md` 规范绘制原型，嵌入到对应需求点下方
+5. spec 有 Mermaid → PRD 原样复制；spec 无 Mermaid → 不新增
+6. 构建侧边栏 TOC
+7. 统一自检 spec + prd（见 SKILL.md 步骤 3）
+
+---
+
+## 基本原则
+
+- **单文件自包含**：仅依赖 mermaid CDN，其余全部内联
+- **Wiki 布局**：左侧固定侧边栏（280px）+ 右侧正文滚动区
+- **内容来源**：spec.md 是正文唯一来源，原型嵌入到对应需求点下方
+- **正文与 spec 逐句一致**：需求List 每行、section 标题、位置、触发场景、核心逻辑逐句 = spec 原文。详见 `../lm-shared/constraints.md`
+- **原型以 spec 为唯一来源**：spec 没有的 UI 元素一律不画。详见 `../lm-shared/constraints.md`
+
+---
+
+## 页面架构
+
+```
+┌──────────────┬──────────────────────────────────────┐
+│  Sidebar     │  Main Content                        │
+│  (fixed      │                                      │
+│   280px)     │  Hero (h1 + subtitle)                │
+│              │                                      │
+│  Logo        │  ## 1. 综述                           │
+│  Meta        │  ## 2. 平台端                         │
+│  Nav         │  ## 3. Portal 端                      │
+│  Footer      │  ... (原型嵌入需求点下方)              │
+│              │                                      │
+└──────────────┴──────────────────────────────────────┘
+```
+
+---
+
+## 侧边栏规范
+
+- 宽度 280px，固定定位，左侧，背景 `#f8f9fa`
+- Header：Logo（"LinkMed 需求规格"）+ 日期（`.sidebar-meta` 只写日期，如 `2026-05-29`）
+- Hero 区：`<h1>` 标题 + `.hero-sub` 副标题
+- Nav：TOC 锚点链接，指向正文 section 的 `id`。激活样式：cyan 左边框 + cyan 文字 + cyan 浅底
+- **导航层级**：一级导航（端/模块分组，`<a class="nav-section">`，可点击跳转）→ 二级导航（`<a class="nav-sub">`，缩进）→ 三级导航（更深缩进，必要时使用），最多三级
+- 移动端（≤900px）：侧边栏左滑隐藏，汉堡按钮 + 遮罩层
+
+---
+
+## 正文内容渲染规则
+
+### 标题层级
+
+| spec.md | PRD HTML |
+|---------|----------|
+| `# 标题` | Hero 区 `<h1>` |
+| `## N. 章节名`（综述 / 端名） | 综述 → `<h2>` + 分割线；端名 → `<div class="section-group-title">` |
+| `### N.M 标题`（需求点） | `<h2>` + 底部分割线 |
+| `### 子标题`（需求点内） | `<h3>` |
+| `#### 子子标题` | `<h4>` |
+
+### 端分组与编号
+
+- 全局统一层级编号：`## N. 章节名` → `### N.M 需求点`，顺序递增
+- spec `## N. 综述` → PRD `<h2>` + 分割线（综述子节 1.1/1.2/1.3 → `<h3>`）
+- spec `## N. 端名` → PRD `<div class="section-group">` 包裹，组标题用 `<div class="section-group-title">`
+- spec `### N.M 标题`（需求点）→ PRD 渲染为 `<h2>` + 分割线
+
+### 引用块
+
+位置和触发场景分两行（见 spec-template.md 需求点顺序）：
+```html
+<blockquote>
+  <p><strong>位置</strong>：平台端 &gt; 订单处理抽屉 &gt; Decline 弹窗</p>
+  <p><strong>触发场景</strong>：点击页脚 [Decline Service] 按钮 → 弹窗弹出后</p>
+</blockquote>
+```
+
+### 邮件内容
+
+使用 `.email-content` 容器（字体与正文一致，非等宽代码块）。新增行用 `<span class="new-line">← 新增行</span>` 标注。
+
+```html
+<div class="email-content">
+  邮件正文内容...
+  <span class="new-line">← 新增行</span>
+</div>
+```
+
+spec 中通知内容用 markdown 代码块；PRD 中用 `<pre>` 标签，前加 `<p><strong>内容</strong>：</p>`。
+
+---
+
+## 原型嵌入规范
+
+原型内容直接内联到正文对应需求点下方，**顺序严格为：位置 → 触发场景（blockquote）→ proto-embed → 核心逻辑（h4 + 正文）**，proto-embed 必须在核心逻辑内容之前。
+
+```html
+<div class="proto-embed">
+  <div class="proto-content" id="proto-xxx">
+    <!-- 原型 HTML 内容 -->
+  </div>
+</div>
+```
+
+原型 CSS 全部在 `.proto-content` 下重写，不与 wiki 样式冲突。保留 `.changed` 标注样式。
+
+---
+
+## Mermaid 流程图
+
+容器：`<div class="mermaid-wrap"><pre class="mermaid">...</pre></div>`
+
+Mermaid 以 spec 为准：spec 有→PRD 继承；spec 文字→PRD 保持文字；spec 无→不创建。
+
+主题配置：
+```js
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'neutral',
+  themeVariables: {
+    primaryColor: '#e6f7ff',
+    primaryBorderColor: '#04b8cc',
+    primaryTextColor: '#1e1e1e',
+    lineColor: '#9ca3af',
+    fontSize: '14px',
+  },
+  flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+});
+```
+
+---
+
+## CSS 样式规范
+
+生成 prd.html 时，**必须 Read `references/css-template.css` 并逐字嵌入** `<style>` 标签内。不自己写，不差异。
+
+- 原型照常使用模板 CSS（该有颜色有颜色）
+- spec/PRD 正文不写 UI 设计细节，但原型不受此限制
+- CSS 只用标准模板。详见 `../lm-shared/constraints.md`
+
+---
+
+## 不可更改项
+
+| # | 禁止 | 标准做法 |
+|---|------|---------|
+| 1 | sidebar 用 `.logo`/`.meta`（非标准缩写） | 用 `.sidebar-logo`/`.sidebar-meta` |
+| 2 | sidebar-header 中写需求名称（`.sidebar-title` 元素） | 只保留 Logo + 日期，删除需求名称节点 |
+| 3 | hero 用 `.badge`/`.subtitle` | 用 `.hero-sub`；禁止加 `.hero-badge` |
+| 4 | h2 border 用 `2px solid var(--cyan)` | 用 `1px solid var(--border)` |
+| 5 | state-label 用 inline-block 浅色底 | 用 `.state-label-inner` absolute定位+cyan实心底 |
+| 6 | main 用 flex+`.content` wrapper | 用 `.main` 直接 margin-left + padding |
+| 7 | 汉堡按钮用 `.hamburger` | 用 `.burger` |
+| 8 | 自创 CSS class 名 | 只使用模板中已有的 class |
+| 9 | 弹窗宽度自定 | modal-box 用 max-width:740px |
+| 10 | 自创 CSS 规则（含 max-width） | 只用标准 CSS 模板中已定义的规则 |
+| 11 | sidebar-meta 自创格式 | 格式严格按已有 PRD 基准，只写日期 |
+| 12 | 同一 UI 组件多次出现时手写不一致 | 先写一份完善版，后续 copy-paste 微调 |
+| 13 | spec 中文写"标记为'图片'"，原型画 "Img" | 用户面向标签英文原名，与原型逐字一致 |
