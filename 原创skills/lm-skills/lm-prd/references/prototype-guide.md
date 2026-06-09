@@ -8,7 +8,8 @@
 
 ## 基本原则
 
-- **代码驱动，忠实还原**：先 grep + Read 完整原文件，然后复刻字段名、字段顺序、控件类型、布局结构、文案措辞、交互模式。视觉细节合理近似即可。如用户提供了 UI 资料优先参考
+- **截图优先**：用户提供图片作为原型时，直接用 `<img>` 嵌入截图，不再手绘 HTML 原型。多图时垂直排列。详见 `image-insert-guide.md`
+- **代码驱动，忠实还原**：无截图时，先 grep + Read 完整原文件，然后复刻字段名、字段顺序、控件类型、布局结构、文案措辞、交互模式。视觉细节合理近似即可。如用户提供了 UI 资料优先参考
 - **优先 Ant Design + frontend-design**：前端使用 Ant Design 5。优先用其组件 + `frontend-design:frontend-design` skill。两者都无法满足才手写
 - HTML + CSS 内联于 prd.html，无外部依赖
 - 只画新增/修改后的可见状态，不画 Before
@@ -47,6 +48,22 @@
 ```
 
 原型中不写位置和触发场景（在 PRD 正文中以 blockquote 分行呈现）。
+
+---
+
+## 截图原型
+
+spec 标注 `**原型**：截图` 时，proto-embed 内用 `<img>` 替代手绘 HTML：
+
+```html
+<div class="proto-embed">
+  <div class="proto-content" id="proto-sec-N">
+    <img src="URL" alt="描述" style="max-width:100%;border-radius:8px;border:1px solid var(--border);" />
+  </div>
+</div>
+```
+
+多张图时垂直排列，`gap:16px`。样式统一：`max-width:100%; border-radius:8px; border:1px solid var(--border)`。
 
 ---
 

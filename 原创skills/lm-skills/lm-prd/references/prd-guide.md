@@ -9,7 +9,7 @@
 1. 确认 spec.md 已完成
 2. Read `references/css-template.css`，将完整 CSS 嵌入 `<style>` 标签
 3. 将 spec.md 每个 section 映射为正文 HTML
-4. 按 `references/prototype-guide.md` 规范绘制原型，嵌入到对应需求点下方
+4. 按 `references/prototype-guide.md` 规范绘制原型，嵌入到对应需求点下方。spec 标注 `**原型**：截图` 时用 `<img>` 嵌入截图，不需要手绘
 5. spec 有 Mermaid → PRD 原样复制；spec 无 Mermaid → 不新增
 6. 构建侧边栏 TOC
 7. 统一自检 spec + prd（见 SKILL.md 步骤 3）
