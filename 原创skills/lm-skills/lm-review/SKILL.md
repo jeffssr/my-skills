@@ -55,4 +55,4 @@ metadata:
 调用方追加维度示例：
 - lm-solution：变更清单顺序（操作流程 vs 按端分组）、技术细节泄露
 - lm-clarify：搜索维度覆盖、代码模块识别完整性
-- lm-prd：proto-embed 在核心逻辑之前、原型 section-title 使用规范、导航层级合规、编号全局层级递增、CSS 规范遵守、交互标注完整性
+- lm-prd：proto-embed 在核心逻辑之前、原型 section-title 使用规范、导航层级合规、编号规范（## 一、二、... → ### 1/2/3...）、CSS 规范遵守、交互标注完整性
