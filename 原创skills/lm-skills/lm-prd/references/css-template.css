@@ -48,9 +48,9 @@ body { font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system
 
 /* Sections */
 section { margin-bottom: 48px; }
-section h2 { font-size: 20px; font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-section h3 { font-size: 17px; font-weight: 600; padding-bottom: 6px; border-bottom: 1px solid var(--border); margin: 24px 0 12px; }
-section h4 { font-size: 14px; font-weight: 600; margin: 16px 0 8px; }
+.main h2 { font-size: 20px; font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.main h3 { font-size: 17px; font-weight: 600; padding-bottom: 6px; border-bottom: 1px solid var(--border); margin: 24px 0 12px; }
+.main h4 { font-size: 14px; font-weight: 600; margin: 16px 0 8px; }
 
 /* Blockquote */
 blockquote { background: var(--cyan-light); border-left: 3px solid var(--cyan); padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 16px 0; }

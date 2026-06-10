@@ -92,7 +92,44 @@
 
 所有 `##` 同级统一渲染为 `<h2>`，`###` 渲染为 `<h3>`。自然层级映射，不因"综述"或"端名"做差异化处理。
 
-端分组用 `<div class="section-group">` 包裹同端的需求点，仅作视觉分组容器（margin 控制），不影响标题层级。
+每个 `##` 和 `###` 节用 `<section id="...">` 包裹。端分组用 `<div class="section-group">` 包裹同端的需求点 `<section>`（不含端标题 `<section>`），仅作视觉分组容器。
+
+正文结构示例：
+```html
+<div class="main">
+  <div class="hero"><h1>标题</h1><p class="hero-sub">副标题</p></div>
+
+  <section id="overview">
+    <h2>一、综述</h2>
+    <h3>1. 现状 & 问题</h3>
+    ...
+    <h3>2. 核心业务流程</h3>
+    ...
+    <h3>3. 需求 List</h3>
+    ...
+  </section>
+
+  <section id="platform">
+    <h2>二、平台端</h2>
+  </section>
+  <div class="section-group">
+    <section id="req-4">
+      <h3>4. 需求点标题</h3>
+      ...
+    </section>
+  </div>
+
+  <section id="portal">
+    <h2>三、Portal 端</h2>
+  </section>
+  <div class="section-group">
+    <section id="req-5">
+      <h3>5. 需求点标题</h3>
+      ...
+    </section>
+  </div>
+</div>
+```
 
 ### 引用块
 
