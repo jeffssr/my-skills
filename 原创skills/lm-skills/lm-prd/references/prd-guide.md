@@ -51,6 +51,25 @@
 - Hero 区：`<h1>` 标题 + `.hero-sub` 副标题
 - Nav：TOC 锚点链接，指向正文 section 的 `id`。激活样式：cyan 左边框 + cyan 文字 + cyan 浅底
 - **导航层级**：一级导航（端/模块分组）用 `<a class="nav-section" href="#section-id">`，可点击跳转；二级导航用 `<a class="nav-sub" href="#section-id">`，缩进；三级导航更深缩进（必要时使用），最多三级。**nav-section 必须用 `<a>` + `href`，不可用 `<div>` / `<span>`**
+
+侧边栏 TOC 结构示例（每个 spec `##` 节对应一个 nav-section）：
+```html
+<nav class="sidebar-nav">
+  <a class="nav-section" href="#overview">一、综述</a>
+  <a class="nav-sub" href="#req-1">1. 现状 & 问题</a>
+  <a class="nav-sub" href="#req-2">2. 核心业务流程</a>
+  <a class="nav-sub" href="#req-3">3. 需求 List</a>
+
+  <a class="nav-section" href="#platform">二、平台端</a>
+  <a class="nav-sub" href="#req-4">4. 需求点标题</a>
+
+  <a class="nav-section" href="#portal">三、Portal 端</a>
+  <a class="nav-sub" href="#req-5">5. 需求点标题</a>
+
+  <a class="nav-section" href="#email">四、邮件</a>
+  <a class="nav-sub" href="#req-6">6. 通知标题</a>
+</nav>
+```
 - 移动端（≤900px）：侧边栏左滑隐藏，汉堡按钮 + 遮罩层
 
 ---
@@ -62,19 +81,18 @@
 | spec.md | PRD HTML |
 |---------|----------|
 | `# 标题` | Hero 区 `<h1>` |
-| `## 一、综述` | `<h2>` + 底部分割线（综述子节 → `<h3>`） |
-| `## 二、平台端` / `## 三、Portal 端` / `## 四、邮件` 等 | `<div class="section-group">` 包裹，组标题用 `<div class="section-group-title">` |
-| `### 1/2/3...`（需求点） | `<h2>` + 底部分割线 |
-| `#### 1.1/1.2...`（需求点内子节） | `<h3>` |
+| `## 一、综述` / `## 二、平台端` / `## 三、Portal 端` / `## 四、邮件` | `<h2>` + 底部分割线 |
+| `### 1/2/3...`（需求点） | `<h3>` + 底部分割线 |
+| `#### 1.1/1.2...`（需求点内子节） | `<h4>` |
 | `##### 1.1.1/1.2.1...`（更深子节） | `<h4>` |
 
 ### 端分组与编号
 
-编号与 spec.md 完全一致（整篇持续编号，规范见 `spec-template.md`），正文直接复制，此处仅说明端名→HTML 元素转换：
+编号与 spec.md 完全一致（整篇持续编号，规范见 `spec-template.md`），正文直接复制。
 
-- spec `## 一、综述` → PRD `<h2>` + 分割线（综述子节 → `<h3>`）
-- spec `## 二、平台端` 等 → PRD `<div class="section-group">` 包裹，组标题用 `<div class="section-group-title">`
-- spec `### N`（需求点）→ PRD 渲染为 `<h2>` + 分割线
+所有 `##` 同级统一渲染为 `<h2>`，`###` 渲染为 `<h3>`。自然层级映射，不因"综述"或"端名"做差异化处理。
+
+端分组用 `<div class="section-group">` 包裹同端的需求点，仅作视觉分组容器（margin 控制），不影响标题层级。
 
 ### 引用块
 
@@ -168,3 +186,5 @@ mermaid.initialize({
 | 11 | sidebar-meta 自创格式 | 格式严格按已有 PRD 基准，只写日期 |
 | 12 | 同一 UI 组件多次出现时手写不一致 | 先写一份完善版，后续 copy-paste 微调 |
 | 13 | spec 中文写"标记为'图片'"，原型画 "Img" | 用户面向标签英文原名，与原型逐字一致 |
+| 14 | nav-section 用 `<div>` / `<span>`（无 href，不可点击） | nav-section 必须用 `<a href="#id">`，不可用 `<div>`/`<span>` |
+| 15 | `##` 标题按"综述/端名"做差异化渲染（h2 vs section-group-title） | 所有 `##` 统一渲染为 `<h2>`，端分组仅作视觉容器 |

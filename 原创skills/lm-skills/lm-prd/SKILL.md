@@ -6,7 +6,7 @@ user-invocable: true
 disable-model-invocation: false
 metadata:
   author: "jeffssr"
-  version: "9.0.1"
+  version: "9.1.0"
   updated: "2026-06-10"
 ---
 
