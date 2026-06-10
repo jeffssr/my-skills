@@ -21,6 +21,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body { font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size: 15px; line-height: 1.7; color: var(--text); background: var(--bg); }
 
 /* Sidebar */
@@ -32,8 +33,8 @@ body { font-family: 'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system
 .sidebar-nav a { display: block; padding: 8px 20px; font-size: 14px; color: var(--text-secondary); text-decoration: none; border-left: 3px solid transparent; transition: all .15s; }
 .sidebar-nav a:hover { color: var(--cyan); background: var(--cyan-light); }
 .sidebar-nav a.active { color: var(--cyan); background: var(--cyan-light); border-left-color: var(--cyan); font-weight: 500; }
-.sidebar-nav .nav-section { font-weight: 600; color: var(--text); font-size: 14px; padding: 12px 20px 6px; border-left: none; }
-.sidebar-nav .nav-section:hover { background: transparent; color: var(--text); }
+.sidebar-nav .nav-section { font-weight: 600; color: var(--text); font-size: 14px; padding: 12px 20px 6px; border-left: none; cursor: pointer; }
+.sidebar-nav .nav-section:hover { color: var(--cyan); background: var(--cyan-light); }
 .sidebar-nav .nav-sub { padding-left: 32px; font-size: 13px; }
 .sidebar-footer { padding: 12px 20px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); }
 

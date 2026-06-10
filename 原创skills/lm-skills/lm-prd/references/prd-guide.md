@@ -50,7 +50,7 @@
 - Header：Logo（"LinkMed 需求规格"）+ 日期（`.sidebar-meta` 只写日期，如 `2026-05-29`）
 - Hero 区：`<h1>` 标题 + `.hero-sub` 副标题
 - Nav：TOC 锚点链接，指向正文 section 的 `id`。激活样式：cyan 左边框 + cyan 文字 + cyan 浅底
-- **导航层级**：一级导航（端/模块分组，`<a class="nav-section">`，可点击跳转）→ 二级导航（`<a class="nav-sub">`，缩进）→ 三级导航（更深缩进，必要时使用），最多三级
+- **导航层级**：一级导航（端/模块分组）用 `<a class="nav-section" href="#section-id">`，可点击跳转；二级导航用 `<a class="nav-sub" href="#section-id">`，缩进；三级导航更深缩进（必要时使用），最多三级。**nav-section 必须用 `<a>` + `href`，不可用 `<div>` / `<span>`**
 - 移动端（≤900px）：侧边栏左滑隐藏，汉堡按钮 + 遮罩层
 
 ---
@@ -62,7 +62,8 @@
 | spec.md | PRD HTML |
 |---------|----------|
 | `# 标题` | Hero 区 `<h1>` |
-| `## 一、综述` / `## 二、平台端` 等 | 综述 → `<h2>` + 分割线；端名 → `<div class="section-group-title">` |
+| `## 一、综述` | `<h2>` + 底部分割线（综述子节 → `<h3>`） |
+| `## 二、平台端` / `## 三、Portal 端` / `## 四、邮件` 等 | `<div class="section-group">` 包裹，组标题用 `<div class="section-group-title">` |
 | `### 1/2/3...`（需求点） | `<h2>` + 底部分割线 |
 | `#### 1.1/1.2...`（需求点内子节） | `<h3>` |
 | `##### 1.1.1/1.2.1...`（更深子节） | `<h4>` |
