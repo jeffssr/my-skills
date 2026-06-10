@@ -47,7 +47,15 @@
 ## 侧边栏规范
 
 - 宽度 280px，固定定位，左侧，背景 `#f8f9fa`
-- Header：Logo（"LinkMed 需求规格"）+ 日期（`.sidebar-meta` 只写日期，如 `2026-05-29`）
+- Header：Logo（"LinkMed 需求规格"）+ 需求名称（`.sidebar-title`）+ 日期（`.sidebar-meta` 只写日期，如 `2026-05-29`）
+
+```html
+<div class="sidebar-header">
+  <div class="sidebar-logo">LinkMed 需求规格</div>
+  <div class="sidebar-title">需求名称</div>
+  <div class="sidebar-meta">2026-05-29</div>
+</div>
+```
 - Hero 区：`<h1>` 标题 + `.hero-sub` 副标题
 - Nav：TOC 锚点链接，指向正文 section 的 `id`。激活样式：cyan 左边框 + cyan 文字 + cyan 浅底
 - **导航层级**：一级导航（端/模块分组）用 `<a class="nav-section" href="#section-id">`，可点击跳转；二级导航用 `<a class="nav-sub" href="#section-id">`，缩进；三级导航更深缩进（必要时使用），最多三级。**nav-section 必须用 `<a>` + `href`，不可用 `<div>` / `<span>`**
@@ -211,7 +219,7 @@ mermaid.initialize({
 | # | 禁止 | 标准做法 |
 |---|------|---------|
 | 1 | sidebar 用 `.logo`/`.meta`（非标准缩写） | 用 `.sidebar-logo`/`.sidebar-meta` |
-| 2 | sidebar-header 中写需求名称（`.sidebar-title` 元素） | 只保留 Logo + 日期，删除需求名称节点 |
+| 2 | sidebar-header 缺少需求名称（`.sidebar-title` 元素） | 必须包含 Logo + 需求名称（`.sidebar-title`）+ 日期（`.sidebar-meta`） |
 | 3 | hero 用 `.badge`/`.subtitle` | 用 `.hero-sub`；禁止加 `.hero-badge` |
 | 4 | h2 border 用 `2px solid var(--cyan)` | 用 `1px solid var(--border)` |
 | 5 | state-label 用 inline-block 浅色底 | 用 `.state-label-inner` absolute定位+cyan实心底 |
